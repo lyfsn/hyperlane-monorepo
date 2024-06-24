@@ -52,11 +52,13 @@ abstract class TokenDeployer<
   }
 
   async constructorArgs(_: ChainName, config: TokenRouterConfig): Promise<any> {
+    this.logger.debug(`------debug-----aaaa-1-c`);
     if (isCollateralConfig(config)) {
       return [config.token, config.mailbox];
     } else if (isNativeConfig(config)) {
       return config.scale ? [config.scale, config.mailbox] : [config.mailbox];
     } else if (isSyntheticConfig(config)) {
+      this.logger.debug(`------debug-----aaaa-1-d`);
       assert(config.decimals); // decimals must be defined by this point
       return [config.decimals, config.mailbox];
     } else {
