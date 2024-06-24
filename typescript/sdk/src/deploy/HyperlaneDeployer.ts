@@ -451,11 +451,11 @@ export abstract class HyperlaneDeployer<
   ): Promise<HyperlaneContracts<Factories>[K]> {
     this.logger.debug(`------debug-----aaaa-2.1`);
     this.logger.debug(`------debug-----aaaa-2.1-`, chain);
-    this.logger.debug(`------debug-----aaaa-2.1-`, this.factories[contractKey]);
+    // this.logger.debug(`------debug-----aaaa-2.1-`, this.factories[contractKey]);
     this.logger.debug(`------debug-----aaaa-2.1-`, contractName);
     this.logger.debug(`------debug-----aaaa-2.1-`, constructorArgs);
     this.logger.debug(`------debug-----aaaa-2.1-`, initializeArgs);
-    this.logger.debug(`------debug-----aaaa-2.1-`, shouldRecover);
+    // this.logger.debug(`------debug-----aaaa-2.1-`, shouldRecover);
 
     const contract = await this.deployContractFromFactory(
       chain,
