@@ -58,7 +58,7 @@ abstract class TokenDeployer<
     } else if (isNativeConfig(config)) {
       return config.scale ? [config.scale, config.mailbox] : [config.mailbox];
     } else if (isSyntheticConfig(config)) {
-      this.logger.debug(`------debug-----aaaa-1-d`);
+      this.logger.debug(`------debug-----aaaa-1-d`, config.decimals);
       assert(config.decimals); // decimals must be defined by this point
       return [config.decimals, config.mailbox];
     } else {
