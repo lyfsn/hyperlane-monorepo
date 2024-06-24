@@ -449,6 +449,14 @@ export abstract class HyperlaneDeployer<
     >,
     shouldRecover = true,
   ): Promise<HyperlaneContracts<Factories>[K]> {
+    this.logger.debug(`------debug-----aaaa-2.1`);
+    this.logger.debug(`------debug-----aaaa-2.1-`, chain);
+    this.logger.debug(`------debug-----aaaa-2.1-`, this.factories[contractKey]);
+    this.logger.debug(`------debug-----aaaa-2.1-`, contractName);
+    this.logger.debug(`------debug-----aaaa-2.1-`, constructorArgs);
+    this.logger.debug(`------debug-----aaaa-2.1-`, initializeArgs);
+    this.logger.debug(`------debug-----aaaa-2.1-`, shouldRecover);
+
     const contract = await this.deployContractFromFactory(
       chain,
       this.factories[contractKey],
@@ -457,6 +465,8 @@ export abstract class HyperlaneDeployer<
       initializeArgs,
       shouldRecover,
     );
+    this.logger.debug(`------debug-----aaaa-2.2`);
+
     this.writeCache(chain, contractName, contract.address);
     return contract;
   }
