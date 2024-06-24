@@ -142,8 +142,13 @@ export abstract class HyperlaneDeployer<
 
       const deployPromise = runWithTimeout(this.chainTimeoutMs, async () => {
         this.logger.info('======debug====contract config====');
+        this.logger.info(
+          '======debug====contract config of chain====',
+          chain,
+          configMap[chain],
+        );
         const contracts = await this.deployContracts(chain, configMap[chain]);
-        this.logger.info('======debug====', chain, configMap[chain], contracts);
+        this.logger.info('======debug====', contracts);
         this.addDeployedContracts(chain, contracts);
         this.logger.info({ chain }, 'Successfully deployed contracts');
       });
