@@ -109,6 +109,7 @@ export abstract class ProxiedRouterDeployer<
 
     await super.runIfOwner(chain, proxyAdmin, async () => {
       this.logger.debug(`Checking ownership of proxy admin to ${adminOwner}`);
+      this.logger.debug(`==debug==test`);
 
       if (!eqAddress(await proxyAdmin.owner(), adminOwner)) {
         this.logger.debug(
