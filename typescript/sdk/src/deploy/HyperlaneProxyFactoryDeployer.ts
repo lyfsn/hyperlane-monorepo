@@ -33,6 +33,7 @@ export class HyperlaneProxyFactoryDeployer extends HyperlaneDeployer<
     for (const factoryName of Object.keys(
       this.factories,
     ) as (keyof ProxyFactoryFactories)[]) {
+      this.logger.info('-----11111------');
       const factory = await this.deployContract(chain, factoryName, []);
       this.addVerificationArtifacts(chain, [
         {

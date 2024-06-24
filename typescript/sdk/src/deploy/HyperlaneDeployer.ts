@@ -141,7 +141,6 @@ export abstract class HyperlaneDeployer<
         .getBlockNumber();
 
       const deployPromise = runWithTimeout(this.chainTimeoutMs, async () => {
-        this.logger.info('======debug====contract config====');
         this.logger.info(
           '======debug====contract config of chain====',
           chain,
