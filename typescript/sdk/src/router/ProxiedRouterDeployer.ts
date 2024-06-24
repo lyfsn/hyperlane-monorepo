@@ -120,9 +120,9 @@ export abstract class ProxiedRouterDeployer<
           proxyAdmin.transferOwnership(adminOwner),
         );
       }
-      this.logger.debug(`==-----deddd---=`);
       return;
     });
+    this.logger.debug(`------debug-----aaaa-1`);
 
     const proxiedRouter = await this.deployProxiedContract(
       chain,
@@ -132,6 +132,7 @@ export abstract class ProxiedRouterDeployer<
       await this.constructorArgs(chain, config),
       await this.initializeArgs(chain, config),
     );
+    this.logger.debug(`------debug-----aaaa-2`);
 
     return {
       [this.routerContractKey(config)]: proxiedRouter,
