@@ -123,6 +123,23 @@ export abstract class ProxiedRouterDeployer<
       return;
     });
     this.logger.debug(`------debug-----aaaa-1`);
+    this.logger.debug(`------debug-----aaaa-1-a`);
+    this.logger.debug(`------debug-----aaaa-1`, chain);
+    this.logger.debug(`------debug-----aaaa-1`, config);
+    this.logger.debug(`------debug-----aaaa-1`, this.routerContractKey(config));
+    this.logger.debug(
+      `------debug-----aaaa-1`,
+      this.routerContractName(config),
+    );
+    this.logger.debug(
+      `------debug-----aaaa-1`,
+      await this.constructorArgs(chain, config),
+    );
+    this.logger.debug(
+      `------debug-----aaaa-1`,
+      await this.initializeArgs(chain, config),
+    );
+    this.logger.debug(`------debug-----aaaa-1-b`);
 
     const proxiedRouter = await this.deployProxiedContract(
       chain,
