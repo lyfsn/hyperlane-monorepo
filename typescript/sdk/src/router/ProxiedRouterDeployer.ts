@@ -109,7 +109,7 @@ export abstract class ProxiedRouterDeployer<
 
     await super.runIfOwner(chain, proxyAdmin, async () => {
       this.logger.debug(`Checking ownership of proxy admin to ${adminOwner}`);
-      this.logger.debug(`==debug==test`);
+      this.logger.debug(`==debug==test=`, await proxyAdmin.owner(), adminOwner);
 
       if (!eqAddress(await proxyAdmin.owner(), adminOwner)) {
         this.logger.debug(
@@ -120,6 +120,7 @@ export abstract class ProxiedRouterDeployer<
           proxyAdmin.transferOwnership(adminOwner),
         );
       }
+      this.logger.debug(`==-----deddd---=`);
       return;
     });
 
