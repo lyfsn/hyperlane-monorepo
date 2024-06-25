@@ -689,8 +689,6 @@ export abstract class HyperlaneDeployer<
     constructorArgs: Parameters<Factories[K]['deploy']>,
     initializeArgs?: Parameters<HyperlaneContracts<Factories>[K]['initialize']>,
   ): Promise<HyperlaneContracts<Factories>[K]> {
-    this.logger.debug(`------debug-----aaaa-1.1`);
-
     // Try to initialize the implementation even though it may not be necessary
     const implementation = await this.deployContractWithName(
       chain,
@@ -699,7 +697,6 @@ export abstract class HyperlaneDeployer<
       constructorArgs,
       initializeArgs,
     );
-    this.logger.debug(`------debug-----aaaa-1.2`);
 
     // Initialize the proxy the same way
     const contract = await this.deployProxy(
@@ -708,10 +705,8 @@ export abstract class HyperlaneDeployer<
       proxyAdmin,
       initializeArgs,
     );
-    this.logger.debug(`------debug-----aaaa-1.3`);
 
     this.writeCache(chain, contractName, contract.address);
-    this.logger.debug(`------debug-----aaaa-1.4`);
 
     return contract;
   }

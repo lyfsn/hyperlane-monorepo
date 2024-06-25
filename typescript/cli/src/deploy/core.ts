@@ -91,7 +91,7 @@ export async function runCoreDeploy({
   const hooksConfig = await runHookStep(chains, hookConfigPath);
   console.log('---debug---aaaa--1-', result);
   console.log('---debug---aaaa--2-', isIsmConfig);
-  console.log('---debug---aaaa--3-', multisigConfigs);
+  // console.log('---debug---aaaa--3-', multisigConfigs);
 
   const deploymentParams: DeployParams = {
     context,
