@@ -122,6 +122,8 @@ async function runIsmStep(
   skipConfirmation: boolean,
   ismConfigPath?: string,
 ) {
+  console.log('---debug---bbbb--1-', ismConfigPath);
+
   if (!ismConfigPath) {
     logBlue(
       '\n',
@@ -139,6 +141,8 @@ async function runIsmStep(
   }
 
   const isAdvancedIsm = isZODISMConfig(ismConfigPath);
+  console.log('---debug---bbbb--2-', isAdvancedIsm);
+
   // separate flow for 'ism' and 'ism-advanced' options
   if (isAdvancedIsm) {
     logBoldUnderlinedRed(
