@@ -135,19 +135,12 @@ export abstract class HyperlaneDeployer<
       const signerAddress = await this.multiProvider.getSignerAddress(chain);
       const fromString = signerUrl || signerAddress;
       this.logger.info(`Deploying to ${chain} from ${fromString}`);
-      this.logger.info('======debug====debug====');
       this.startingBlockNumbers[chain] = await this.multiProvider
         .getProvider(chain)
         .getBlockNumber();
 
       const deployPromise = runWithTimeout(this.chainTimeoutMs, async () => {
-        this.logger.info(
-          '======debug====contract config of chain====',
-          chain,
-          configMap[chain],
-        );
         const contracts = await this.deployContracts(chain, configMap[chain]);
-        this.logger.info('======debug====', contracts);
         this.addDeployedContracts(chain, contracts);
         this.logger.info({ chain }, 'Successfully deployed contracts');
       });
