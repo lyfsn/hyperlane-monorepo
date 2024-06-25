@@ -448,8 +448,6 @@ export abstract class HyperlaneDeployer<
     >,
     shouldRecover = true,
   ): Promise<HyperlaneContracts<Factories>[K]> {
-    this.logger.debug(`------debug-----aaaa-2.1`, chain, contractName);
-
     const contract = await this.deployContractFromFactory(
       chain,
       this.factories[contractKey],

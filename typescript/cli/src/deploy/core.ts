@@ -279,6 +279,8 @@ async function executeDeploy({
   // 3. Construct ISM configs for all deployable chains
   const defaultIsms: ChainMap<IsmConfig> = {};
   for (const ismOrigin of chains) {
+    console.log('-----debug----ccc--1-', ismConfigs, ismOrigin);
+    console.log('-----debug----ccc--2-', ismConfigs[ismOrigin]);
     defaultIsms[ismOrigin] =
       ismConfigs[ismOrigin] ??
       buildIsmConfig(owner, ismOrigin, chains, multisigConfigs);
