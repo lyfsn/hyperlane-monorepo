@@ -81,6 +81,7 @@ export class HyperlaneCoreDeployer extends HyperlaneDeployer<
       this.ismFactory.getContracts(chain),
     );
     if (!matches) {
+      this.logger.info('-----debug---222---', config.defaultIsm);
       this.logger.debug('Deploying default ISM');
       defaultIsm = await this.deployIsm(
         chain,

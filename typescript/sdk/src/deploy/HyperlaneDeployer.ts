@@ -251,6 +251,7 @@ export abstract class HyperlaneDeployer<
     const configuredIsm = await getIsm(contract);
     let matches = false;
     let targetIsm: Address;
+    this.logger.debug(`---debug---123---`, typeof config === 'string');
     if (typeof config === 'string') {
       if (eqAddress(configuredIsm, config)) {
         matches = true;
