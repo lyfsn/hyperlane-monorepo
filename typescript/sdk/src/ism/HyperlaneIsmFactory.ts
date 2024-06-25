@@ -98,7 +98,7 @@ export class HyperlaneIsmFactory extends HyperlaneApp<ProxyFactoryFactories> {
     const ismType = config.type;
     const logger = this.logger.child({ destination, ismType });
 
-    logger.info('-------------debug--------1111-----');
+    logger.info('-------------debug--------1111-----', ismType);
 
     logger.debug(
       `Deploying ${ismType} to ${destination} ${
