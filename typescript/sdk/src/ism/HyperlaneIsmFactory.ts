@@ -86,6 +86,7 @@ export class HyperlaneIsmFactory extends HyperlaneApp<ProxyFactoryFactories> {
     mailbox?: Address;
     existingIsmAddress?: Address;
   }): Promise<DeployedIsm> {
+    logger.info('-------------debug--------1111-----');
     const { destination, config, origin, mailbox, existingIsmAddress } = params;
     if (typeof config === 'string') {
       // @ts-ignore
