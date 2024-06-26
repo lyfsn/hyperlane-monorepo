@@ -40,6 +40,8 @@ contract StorageGasOracle is IGasOracle, Ownable {
 
     // ============ External Functions ============
 
+    constructor(address initialOwner) Ownable(initialOwner) {}
+
     /**
      * @notice Returns the stored `remoteGasData` for the `_destinationDomain`.
      * @param _destinationDomain The destination domain.
