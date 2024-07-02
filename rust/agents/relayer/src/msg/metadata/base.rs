@@ -322,7 +322,12 @@ impl BaseMetadataBuilder {
     }
 
     pub async fn highest_known_leaf_index(&self) -> Option<u32> {
-        self.origin_prover_sync.read().await.count().checked_sub(1)
+        // self.origin_prover_sync.read().await.count().checked_sub(1)
+        let count = self.origin_prover_sync.read().await.count();
+        info!("Count value before subtraction: {}", count);
+        let result = count.checked_sub(1);
+        info!("Result after checked_sub: {:?}", result);
+        result
     }
 
     pub async fn get_merkle_leaf_id_by_message_id(&self, message_id: H256) -> Result<Option<u32>> {
