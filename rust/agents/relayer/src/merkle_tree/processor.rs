@@ -67,16 +67,19 @@ impl ProcessorExt for MerkleTreeProcessor {
 
 impl MerkleTreeProcessor {
     fn next_unprocessed_leaf(&mut self) -> Result<Option<MerkleTreeInsertion>> {
+        info!("===next_unprocessed_leaf===");
         let leaf = if let Some(insertion) = self
             .db
             .retrieve_merkle_tree_insertion_by_leaf_index(&self.leaf_index)?
         {
+            info!("===next_unprocessed_leaf===1");
             // Update the metrics
             self.metrics
                 .max_leaf_index_gauge
                 .set(insertion.index() as i64);
             Some(insertion)
         } else {
+            info!("===next_unprocessed_leaf===2");
             trace!(leaf_index=?self.leaf_index, "No merkle tree insertion found in DB for leaf index, waiting for it to be indexed");
             None
         };
