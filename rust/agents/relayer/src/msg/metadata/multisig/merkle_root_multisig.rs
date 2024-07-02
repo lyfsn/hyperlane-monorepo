@@ -8,6 +8,7 @@ use eyre::{Context, Result};
 use hyperlane_base::MultisigCheckpointSyncer;
 use hyperlane_core::{unwrap_or_none_result, HyperlaneMessage, H256};
 use tracing::debug;
+use tracing::info;
 
 use crate::msg::metadata::MessageMetadataBuilder;
 
@@ -38,7 +39,7 @@ impl MultisigIsmMetadataBuilder for MerkleRootMultisigMetadataBuilder {
         const CTX: &str = "When fetching MerkleRootMultisig metadata";
         let highest_leaf_index = unwrap_or_none_result!(
             self.highest_known_leaf_index().await,
-            debug!("Couldn't get highest known leaf index")
+            info!("Couldn't get highest known leaf index")
         );
         let leaf_index = unwrap_or_none_result!(
             self.get_merkle_leaf_id_by_message_id(message.id())
