@@ -44,7 +44,7 @@ impl MultisigIsmMetadataBuilder for MerkleRootMultisigMetadataBuilder {
             self.get_merkle_leaf_id_by_message_id(message.id())
                 .await
                 .context(CTX)?,
-            debug!(
+            info!(
                 ?message,
                 "No merkle leaf found for message id, must have not been enqueued in the tree"
             )
@@ -61,7 +61,7 @@ impl MultisigIsmMetadataBuilder for MerkleRootMultisigMetadataBuilder {
                 )
                 .await
                 .context(CTX)?,
-            debug!(
+            info!(
                 leaf_index,
                 highest_leaf_index, "Couldn't get checkpoint in range"
             )

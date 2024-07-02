@@ -346,7 +346,7 @@ impl HyperlaneLogStore<MerkleTreeInsertion> for HyperlaneRocksDB {
                 insertions += 1;
             }
         }
-        info!("====insert to merkle db=={}",insertions);
+        info!("====insert to merkle db=={}", insertions);
         Ok(insertions)
     }
 }
