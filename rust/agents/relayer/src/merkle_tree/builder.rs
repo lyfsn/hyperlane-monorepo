@@ -1,7 +1,7 @@
 use std::fmt::Display;
 
 use eyre::{Context, Result};
-use tracing::{debug, info, error, instrument};
+use tracing::{debug, error, instrument};
 
 use hyperlane_base::db::DbError;
 use hyperlane_core::{
