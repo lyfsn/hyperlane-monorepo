@@ -11,7 +11,7 @@ use hyperlane_base::db::HyperlaneRocksDB;
 use hyperlane_core::{HyperlaneDomain, MerkleTreeInsertion};
 use prometheus::IntGauge;
 use tokio::sync::RwLock;
-use tracing::trace;
+use tracing::{info, trace};
 
 use crate::processor::ProcessorExt;
 
@@ -48,6 +48,7 @@ impl ProcessorExt for MerkleTreeProcessor {
     /// testing purposes.
     async fn tick(&mut self) -> Result<()> {
         if let Some(insertion) = self.next_unprocessed_leaf()? {
+            info!("===next left===");
             // Feed the message to the prover sync
             self.prover_sync
                 .write()

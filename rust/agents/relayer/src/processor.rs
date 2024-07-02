@@ -6,7 +6,7 @@ use eyre::Result;
 use hyperlane_core::HyperlaneDomain;
 use tokio::task::JoinHandle;
 use tokio_metrics::TaskMonitor;
-use tracing::{instrument, warn};
+use tracing::{info, instrument, warn};
 
 #[async_trait]
 pub trait ProcessorExt: Send + Debug {
@@ -35,7 +35,9 @@ impl Processor {
     #[instrument(ret, skip(self), level = "info", fields(domain=%self.ticker.domain()))]
     async fn main_loop(mut self) {
         loop {
+            info!("===enter merkle loop===");
             if let Err(err) = self.ticker.tick().await {
+                info!("===merkle loop err===");
                 warn!(error=%err, "Error in processor tick");
                 tokio::time::sleep(std::time::Duration::from_secs(5)).await;
             }
