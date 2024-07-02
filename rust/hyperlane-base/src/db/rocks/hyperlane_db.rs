@@ -1,7 +1,7 @@
 use async_trait::async_trait;
 use eyre::{bail, Result};
 use paste::paste;
-use tracing::{debug, instrument, trace};
+use tracing::{debug, info, instrument, trace};
 
 use hyperlane_core::{
     GasPaymentKey, HyperlaneDomain, HyperlaneLogStore, HyperlaneMessage,
@@ -200,7 +200,7 @@ impl HyperlaneRocksDB {
         insertion_block_number: u64,
     ) -> DbResult<bool> {
         if let Ok(Some(_)) = self.retrieve_merkle_tree_insertion_by_leaf_index(&insertion.index()) {
-            debug!(insertion=?insertion, "Tree insertion already stored in db");
+            info!(insertion=?insertion, "Tree insertion already stored in db");
             return Ok(false);
         }
 

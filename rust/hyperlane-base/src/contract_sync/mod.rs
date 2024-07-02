@@ -210,7 +210,7 @@ where
             }
         };
         if stored > 0 {
-            debug!(
+            info!(
                 domain = self.domain.as_ref(),
                 count = stored,
                 sequences = ?logs.iter().map(|(log, _)| log.sequence).collect::<Vec<_>>(),
