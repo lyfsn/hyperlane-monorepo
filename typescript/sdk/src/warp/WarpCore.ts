@@ -392,20 +392,33 @@ export class WarpCore {
         sender,
         senderPubKey,
       });
+      console.log('Estimated Fees:', feeEstimate);
     }
     const { localQuote, interchainQuote } = feeEstimate;
 
+    console.log('Initial Balance:', balance.toString());
     let maxAmount = balance;
+
     if (originToken.isFungibleWith(localQuote.token)) {
       maxAmount = maxAmount.minus(localQuote.amount);
+      console.log('After Local Fee Deduction:', maxAmount.toString());
     }
 
     if (originToken.isFungibleWith(interchainQuote.token)) {
       maxAmount = maxAmount.minus(interchainQuote.amount);
+      console.log('After Interchain Fee Deduction:', maxAmount.toString());
     }
 
-    if (maxAmount.amount > 0) return maxAmount;
-    else return originToken.amount(0);
+    if (maxAmount.amount > 0) {
+      console.log('Final Max Transfer Amount:', maxAmount.toString());
+      return maxAmount;
+    } else {
+      console.log(
+        'Final Max Transfer Amount:',
+        originToken.amount(0).toString(),
+      );
+      return originToken.amount(0);
+    }
   }
 
   /**
@@ -648,7 +661,7 @@ export class WarpCore {
       feeEstimate,
     });
     if (amount > maxTransfer.amount) {
-      console.log('-------', maxTransfer, amount);
+      console.log('-------', maxTransfer.amount, amount);
       return { amount: 'Insufficient balance for gas and transfer' };
     }
 
