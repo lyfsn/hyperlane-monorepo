@@ -648,6 +648,7 @@ export class WarpCore {
       feeEstimate,
     });
     if (amount > maxTransfer.amount) {
+      console.log('-------', maxTransfer, amount);
       return { amount: 'Insufficient balance for gas and transfer' };
     }
 
