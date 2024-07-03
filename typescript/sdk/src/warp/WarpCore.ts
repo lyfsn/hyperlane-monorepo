@@ -399,6 +399,7 @@ export class WarpCore {
     console.log('Initial Balance:', balance);
     let maxAmount = balance;
 
+    return maxAmount;
     if (originToken.isFungibleWith(localQuote.token)) {
       maxAmount = maxAmount.minus(localQuote.amount);
       console.log('After Local Fee Deduction:', maxAmount);
