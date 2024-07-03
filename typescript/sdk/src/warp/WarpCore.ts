@@ -650,6 +650,7 @@ export class WarpCore {
       sender,
       senderPubKey,
     });
+    console.log('-------feeEstimate---', feeEstimate);
     const maxTransfer = await this.getMaxTransferAmount({
       balance: senderBalanceAmount,
       destination,
