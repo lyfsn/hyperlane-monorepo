@@ -396,27 +396,24 @@ export class WarpCore {
     }
     const { localQuote, interchainQuote } = feeEstimate;
 
-    console.log('Initial Balance:', balance.toString());
+    console.log('Initial Balance:', balance);
     let maxAmount = balance;
 
     if (originToken.isFungibleWith(localQuote.token)) {
       maxAmount = maxAmount.minus(localQuote.amount);
-      console.log('After Local Fee Deduction:', maxAmount.toString());
+      console.log('After Local Fee Deduction:', maxAmount);
     }
 
     if (originToken.isFungibleWith(interchainQuote.token)) {
       maxAmount = maxAmount.minus(interchainQuote.amount);
-      console.log('After Interchain Fee Deduction:', maxAmount.toString());
+      console.log('After Interchain Fee Deduction:', maxAmount);
     }
 
     if (maxAmount.amount > 0) {
-      console.log('Final Max Transfer Amount:', maxAmount.toString());
+      console.log('Final Max Transfer Amount:', maxAmount);
       return maxAmount;
     } else {
-      console.log(
-        'Final Max Transfer Amount:',
-        originToken.amount(0).toString(),
-      );
+      console.log('Final Max Transfer Amount:', originToken.amount(0));
       return originToken.amount(0);
     }
   }
