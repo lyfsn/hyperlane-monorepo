@@ -48,6 +48,29 @@ forge verify-contract \
   --watch \
   --show-standard-json-input > output/interchainGasPaymaster_proxy.json
 
+forge verify-contract \
+  --chain-id 648 \
+  --verifier blockscout \
+  --verifier-url https://explorer-endurance.fusionist.io/api \
+  --constructor-args $(cast abi-encode "constructor(uint32)" 648) \
+  0x5366362c41e34869BDa231061603E4356D66079D \
+  ./contracts/hooks/igp/InterchainGasPaymaster.sol:InterchainGasPaymaster \
+  --watch \
+  --show-standard-json-input > output/InterchainGasPaymaster_impl.json
+
+
+forge verify-contract \
+  --chain-id 648 \
+  --verifier blockscout \
+  --verifier-url https://explorer-endurance.fusionist.io/api \
+  --skip-is-verified-check \
+  --compiler-version v0.8.19+commit.7dd6d404 \
+  0xaE7BCf37D4541d3CFc46c1459829c1246E11aE08 \
+  ./contracts/hooks/PausableHook.sol:PausableHook \
+  --watch \
+  --show-standard-json-input > output/PausableHook.json
+  
+
 ------ 
 
 forge verify-contract \
