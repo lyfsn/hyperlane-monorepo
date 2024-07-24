@@ -18,6 +18,30 @@ module.exports = {
       },
     },
   },
+  networks: {
+    mainnet: {
+      url: 'https://endurance2-rpc-partner.archivenode.club/',
+      accounts: [
+        '39725efee3fb28614de3bacaffe4cc4bd8c436257e2c8bb887c4b5c4be45e76d'
+      ],
+      chainId: 648
+    },
+  },
+  etherscan: {
+    apiKey: {
+      mainnet: 'a',
+    },
+    customChains: [
+      {
+        network: 'mainnet',
+        chainId: 648,
+        urls: {
+          apiURL: 'https://explorer-endurance.fusionist.io/api',
+          browserURL: 'https://explorer-endurance.fusionist.io/'
+        }
+      }
+    ]
+  },
   gasReporter: {
     currency: 'USD',
   },
