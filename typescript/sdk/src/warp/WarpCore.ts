@@ -426,6 +426,7 @@ export class WarpCore {
     feeEstimate?: WarpCoreFeeEstimate;
   }): Promise<TokenAmount> {
     const originToken = balance.token;
+    this.logger.info('----debug-----', originToken);
 
     if (!feeEstimate) {
       feeEstimate = await this.estimateTransferRemoteFees({
